@@ -2,14 +2,14 @@
 include('connect.php');
 session_start();
 $src;
-$vt =$_SESSION['vt'];
- if($vt = 'Visitor')
+$vt =$_SESSION['ty'];
+ if($vt!='Visitor')
+        {
+          $src='green.png';
+        }
+  else 
         {
           $src='red.png';
-        }
-        else
-        {
-          $src='green.php';
         }
 ?>
 <!DOCTYPE html>

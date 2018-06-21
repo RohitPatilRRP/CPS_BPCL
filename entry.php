@@ -73,7 +73,10 @@ include('connect.php');
     </select>
   </div> <br>
   <button type="submit" class="btn btn-primary" name="entry">Print Receipt</button>
-</form></center>
+</form><br>
+ <center>
+       <button class="btn btn-primary"><a href="menu.php" style="text-decoration: none;color: white;">Back</button></a>
+    </center>
 </body>
 </html>
 

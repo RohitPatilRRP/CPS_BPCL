@@ -28,13 +28,14 @@ include('connect.php');
 	<img src="bpcl.jpg" style="width: 5%">	Vehicle Parking Management System.
 		<button  class="btn btn-danger" onclick="window.location.href='logout.php'" style="float: right;margin-right: 4%;color: white;margin-top:1.5%;">Logout</button>
 	</div><br><br>
+<div class="container">
+	<div>  
 <?php
 $sql= "select plotno from slots where available='Yes';";
 $res=mysqli_query($db,$sql);
 if(mysqli_num_rows($res)>0){
 ?>
 
-<div class="container">  
 <h3>Slots Available , select an action :</h3>  <br>           
   <div class="dropdown" >
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Vehicle Entry Type
@@ -51,7 +52,9 @@ if(mysqli_num_rows($res)>0){
 
 		?>
 		<h3>No slots Available</h3> 
-		</div><br><br>
+    <button class="btn btn-primary " type="button">
+    <a href="exit.php" style="text-decoration: none;color: white;">Vehicle Exit</a></button>
+		</div><br>
 		<?php
 	}
 ?>
@@ -70,6 +73,6 @@ cursor: default;">About BPCL</h2>
 With relentless hours of work and effort put in by both man and machine, the swamps gave way to towers, tanks of steel and miles of pipeline. Soon, the refinery spread over 454 acres of land at Mahul, went on-stream on 30th January 1955, one year ahead of schedule.
 
 Dr. S. Radakrishnan, the then Vice President of India, declared the 2.2 MMTPA (Million Metric Tonnes Per Annum) Refinery open on 17th March 1955, making it the largest refinery in India then.</p>
-	</div>
+	</div></div>
 </body>
 </html>

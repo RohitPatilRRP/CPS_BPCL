@@ -37,6 +37,7 @@ include('connect.php');
  <br>
   <button type="submit" class="btn btn-primary" name="exit">Remove</button>
 </form></center>
+<center><button class="btn btn-primary" style="margin-top: 5%;"><a href="menu.php" style="text-decoration: none;color: white;">Back</button></a></center>
 </body>
 </html>
 
@@ -52,7 +53,6 @@ if(isset($_POST['exit'])){
     $res=mysqli_query($db,$sql);
     echo ("<script LANGUAGE='JavaScript'>
     window.alert('Succesfully Removed');
-    window.location.href='menu.php';
     </script>");
 }
 else{
