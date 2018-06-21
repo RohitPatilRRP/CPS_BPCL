@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('connect.php');
 ?>
 <!DOCTYPE html>
@@ -26,13 +27,7 @@ include('connect.php');
 		<div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
 		<center><img src="bpcl.jpg" style="width: 5%">	Bharat Petroleum.</center>
 	</div></div>
-	<!-- <form>
-		<input type="text" name="Vehicle_Type" placeholder="type">
-		<input type="text" name="Date_Time"  placeholder="date time">
-<input type="text" name="BPCL_Employee"  placeholder="emp">
-<input type="text" name="Car_Details">
-	<input type="text" name="Parking_Availabity">
-	</form> --><br>
+<br>
 
 <center>
 	<form style="width: 50%;border: 2px solid black;border-radius:5px;padding: 10px " method="post">
@@ -77,7 +72,7 @@ include('connect.php');
   ?>
     </select>
   </div> <br>
-  <button type="submit" class="btn btn-primary" name="entry">Enter</button>
+  <button type="submit" class="btn btn-primary" name="entry">Print Receipt</button>
 </form></center>
 </body>
 </html>
@@ -93,9 +88,15 @@ if(isset($_POST['entry']))
 
   $inst = "update slots set carid='$carid',name='$name',available='No',vehicle_type='$vt',user_type='$ty' where plotno='$plotno'";
   $fire= mysqli_query($db,$inst);
+  $_SESSION['carid'] = $carid; 
+  $_SESSION['name'] = $name;
+  $_SESSION['plotno'] = $plotno;
+  $_SESSION['vt'] = $vt;
+  $_SESSION['ty'] = $ty;
+  $_SESSION['time'] = date('Y-m-d H:i:s');
+
   echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Succesfully Updated');
-    window.location.href='menu.php';
+    window.location.href='print.php';
     </script>");
 }
 

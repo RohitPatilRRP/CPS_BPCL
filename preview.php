@@ -23,24 +23,30 @@ include('connect.php');
 </head>
 <body>
 	<br>
+	<div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
+	<img src="bpcl.jpg" style="width: 5%">	Vehicle Parking Management System.
+		<button  class="btn btn-danger" onclick="window.location.href='logout.php'" style="float: right;margin-right: 4%;color: white">Logout</button>
+	</div>
+	<div style="margin-left: 5%;margin-right: 5%;">
+		
 	<h2> Slots available and allocated </h2>
 
 	<span>
 <?php
-$sql = "select plotno from slots where available='Yes';";
+$sql = "select * from slots where available='Yes';";
 $a = mysqli_query($db,$sql);
-$sql2 = "select plotno from slots where available='No';";
+$sql2 = "select * from slots where available='No';";
 $a2 = mysqli_query($db,$sql2);
 ?>
 <h3>Available Slots</h3>
-<table>
+<table class="table">
 <?php
 if(mysqli_num_rows($a)>0){
 while($row = mysqli_fetch_array($a))
 {
 ?>
 <tr>
-	<td><?php echo $row['plotno'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row['plotno'] ?></td>
 </tr>
 <?php
 } }
@@ -54,16 +60,21 @@ else {
 
 <br>
 <h3>Allocated Slots</h3>
-<table>
+<table class="table">
+	<?php if(mysqli_num_rows($a2)>0){ ?>
 <tr>
+	<th>Plot Number</th>
+	<th>User Name</th>
+	<th>Vehicle ID</th>
 </tr>
 <?php
-if(mysqli_num_rows($a2)>0){
 while($row1 = mysqli_fetch_array($a2))
 	{	
 ?>
 <tr>
-	<td><?php echo $row1['plotno'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['plotno'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['name'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
 </tr>
 <?php
 	} 
@@ -73,6 +84,8 @@ else {
 } 
 ?>
 </table>
+
+</div>
 
 
 

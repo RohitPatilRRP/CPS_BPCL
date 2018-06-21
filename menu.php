@@ -26,7 +26,7 @@ include('connect.php');
 <body>
 	<div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
 	<img src="bpcl.jpg" style="width: 5%">	Vehicle Parking Management System.
-		<button  class="btn btn-danger" onclick="window.location.href='logout.php'" style="float: right;margin-right: 4%;color: white">Logout</button>
+		<button  class="btn btn-danger" onclick="window.location.href='logout.php'" style="float: right;margin-right: 4%;color: white;margin-top:1.5%;">Logout</button>
 	</div><br><br>
 <?php
 $sql= "select plotno from slots where available='Yes';";
@@ -35,9 +35,9 @@ if(mysqli_num_rows($res)>0){
 ?>
 
 <div class="container">  
-<h3>Slots Available , select an action :</h3>             
-  <div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Entry Type
+<h3>Slots Available , select an action :</h3>  <br>           
+  <div class="dropdown" >
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Vehicle Entry Type
     </button>
     <ul class="dropdown-menu">
       <li><a href="entry.php">Vehicle Entry</a></li>
@@ -56,10 +56,20 @@ if(mysqli_num_rows($res)>0){
 	}
 ?>
 <br>
- <button class="btn btn-primary" type="button"><a href="preview.php" style="text-decoration: none;color: white">View Slots occupied</button>
+<div style="height: 10px;"><button class="btn btn-primary" type="button"><a href="preview.php" style="text-decoration: none;color: white;float: right;">View Slots occupied</button></a></div>
+ 
 <br>
-    <br>
-<center>
-	<iframe width="1000" height="500" src="https://www.youtube.com/embed/_LJ_pAALhLU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
+    <br><br>
+    <div style="float: left;width: 50%;">
+	<iframe width="450" height="250" src="https://www.youtube.com/embed/_LJ_pAALhLU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+	<div style="margin-left: 50%;margin-top:-2%;"> 
+<h2 style="color: black;pointer-events: none;
+cursor: default;">About BPCL</h2>
+<p>On 15th December 1951, the Burmah Shell Group signed an agreement with the Government of India to build a modern refinery at Trombay, Bombay. Soon after, on 3rd November 1952, Burmah Shell Refineries Limited was incorporated as a private limited company under the Indian Companies Act and began working on the marshlands of Trombay.
+
+With relentless hours of work and effort put in by both man and machine, the swamps gave way to towers, tanks of steel and miles of pipeline. Soon, the refinery spread over 454 acres of land at Mahul, went on-stream on 30th January 1955, one year ahead of schedule.
+
+Dr. S. Radakrishnan, the then Vice President of India, declared the 2.2 MMTPA (Million Metric Tonnes Per Annum) Refinery open on 17th March 1955, making it the largest refinery in India then.</p>
+	</div>
 </body>
 </html>

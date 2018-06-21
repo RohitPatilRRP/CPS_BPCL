@@ -1,5 +1,6 @@
 <?php
 include('connect.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,43 +22,32 @@ include('connect.php');
   <link href="https://fonts.googleapis.com/css?family=Heebo|Indie+Flower" rel="stylesheet">
 </head>
 <body>
-  
-  <div class="limiter">
+    <div class="limiter">
     <div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
     <center><img src="bpcl.jpg" style="width: 5%">  Bharat Petroleum.</center>
   </div></div>
-<br>
 
-<center>
-  <form style="width: 50%;border: 2px solid black;border-radius:5px;padding: 10px " method="post">
-<div class="form-group">
-     <label>Enter Card ID to be removed</label>
-    <input type="text" class="form-control" name="carid" placeholder="Car ID">
+  <div class="container-login100">
+    <div class="wrap-login100" style="width: 50%; margin-top:-5%;">
+      <center style="margin-top: -5%;"><h2>Welcome Slip</h2></center><br>
+      <table>
+        <tr>
+          <td colspan="4" style="">
+        Vehicle ID : <?php echo $_SESSION['carid']; ?><br><br>
+        Name       : <?php echo ucfirst($_SESSION['name']); ?><br><br>
+        Plot Number: <?php echo $_SESSION['plotno']; ?><br><br>
+        Vehicle Type: <?php echo $_SESSION['vt']; ?><br><br>
+        Guest Type : <?php echo $_SESSION['ty']; ?><br><br>
+        Time       : <?php echo $_SESSION['time']; ?><br><br>
+      </td><td>&nbsp;</td><td></td><td></td>
+      <td rowspan="6" colspan="1" >
+      
+      </td>
+        </tr>
+        </table>
+
+    </div>
+
   </div>
- <br>
-  <button type="submit" class="btn btn-primary" name="exit">Remove</button>
-</form></center>
 </body>
 </html>
-
-
-<?php
-
-if(isset($_POST['exit'])){
- $carid = $_POST['carid'];
- $sql="UPDATE slots SET carid='',name='',available='Yes',vehicle_type='',user_type='' WHERE carid='$carid';";
- $check = "SELECT * FROM slots WHERE carid='$carid';";
- $abc = mysqli_query($db,$check);
-  if(mysqli_num_rows($abc)>0){
-    $res=mysqli_query($db,$sql);
-    echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Succesfully Removed');
-    window.location.href='menu.php';
-    </script>");
-}
-else{
-  alert("Entry Not Found");
-}
-}
-
-?>
