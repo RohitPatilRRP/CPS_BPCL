@@ -3,11 +3,10 @@ include('connect.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
   <title>Vehicle Parking System</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">  
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -18,6 +17,8 @@ include('connect.php');
   <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" type="text/css" href="css/util.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Heebo|Indie+Flower" rel="stylesheet">
 </head>
 <body>
   
@@ -39,16 +40,24 @@ include('connect.php');
 </body>
 </html>
 
+
 <?php
-if(isset($_POST['exit']))
-{
-  $carid = $_POST['carid'];
-  $inst = "update slots set carid='',name='',available='Yes',vehicle_type='',user_type='' where carid='$carid'";
-  $fire= mysqli_query($db,$inst);
-  echo ("<script LANGUAGE='JavaScript'>
+
+if(isset($_POST['exit'])){
+ $carid = $_POST['carid'];
+  $sql="UPDATE slots SET carid='',name='',available='Yes',vehicle_type='',user_type='' WHERE carid='$carid';";
+ $check = "SELECT * FROM slots WHERE carid='$carid';";
+ $abc = mysqli_query($db,$check);
+  if(mysqli_num_rows($abc)>0){
+     $res=mysqli_query($db,$sql);
+    echo ("<script LANGUAGE='JavaScript'>
     window.alert('Succesfully Removed');
     window.location.href='menu.php';
     </script>");
+}
+else{
+  alert("Entry Not Found");
+}
 }
 
 ?>

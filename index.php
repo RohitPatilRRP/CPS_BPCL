@@ -6,11 +6,10 @@ include('connect.php');
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 	<title>Vehicle Parking System</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
@@ -21,18 +20,30 @@ include('connect.php');
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Heebo|Indie+Flower" rel="stylesheet">
+	  <style type="text/css">
+  	#lgout:hover{
+  		background-color: green;
+  		color: white;
+  		transition: background-color 0.5s, color 0.5s;
+  	}
+  </style>
 </head>
 <body>
 	
 	<div class="limiter">
 		<div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
-		<center><img src="bpcl.jpg" style="width: 5%">	Bharat Petroleum.</center>
+			<div style="margin-left: 2%;">
+			<img src="https://www.bharatpetroleum.com/images/bpcl_logo_1.jpg" alt="Bharat Petroleum Corporation Limited" style="width: 8%;margin-left:23px;">
+		<h3 style="font-size:25px;color: blue;font-family: 'Indie Flower', cursive;">energising lives</h3></div>
+		<center><h3 style="margin-top: -9%;font-family: 'Heebo', sans-serif;">Vehicle Parking Management System </h3></center>
 		</div>
-		<div class="container-login100">
-			<div class="wrap-login100">
+		<div class="container-login100"> 
+			<div class="wrap-login100" style="margin-top: -3%;">
 				<form class="login100-form validate-form" method="post">
 					<span class="login100-form-title p-b-26">
-						Login
+						Admin Login
 					</span>
 					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="name">
@@ -49,18 +60,8 @@ include('connect.php');
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<input type="submit" name="login" value="Login" style="width: 100%;padding: 5px;">
+							<input type="submit" name="login" id="lgout" value="Login" style="width: 100%;padding: 5px;">
 						</div>
-					</div>
-
-					<div class="text-center p-t-115">
-						<span class="txt1">
-							Don’t have an account?
-						</span>
-
-						<a class="txt2" href="#">
-							Sign Up
-						</a>
 					</div>
 				</form>
 			</div>
