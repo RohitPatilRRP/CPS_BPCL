@@ -20,6 +20,15 @@ include('connect.php');
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function printContent(el){
+    var restorepage = document.body.innerHTML;
+    var printcontent = document.getElementById(el).innerHTML;
+    document.body.innerHTML = printcontent;
+    window.print();
+    document.body.innerHTML = restorepage;
+}
+  </script>
 </head>
 <body>
 	<br>
@@ -69,7 +78,7 @@ else {
 </tr>
 <?php
 while($row1 = mysqli_fetch_array($a2))
-	{	
+	{
 ?>
 <tr>
 	<td style="font-size: 20px;"><?php echo $row1['plotno'] ?></td>
@@ -80,18 +89,10 @@ while($row1 = mysqli_fetch_array($a2))
 	} 
 }
 else {
-	echo "No slots allocated";
+	echo "<h3 style=\"font-size: 20px;\">No slots allocated</h3>";
 } 
 ?>
 </table>
-
 </div>
-
-
-
-
-
-
-
 </body>
 </html>
