@@ -1,6 +1,8 @@
 
 <?php
 include('connect.php');
+session_start();
+if(isset($_SESSION['user'])){
 
 ?>
 <!DOCTYPE html>
@@ -30,6 +32,7 @@ include('connect.php');
 	<div style="background-color: blue;padding: 1%;font-size: 30px;color: white;">
 	<img src="bpcl.jpg" style="width: 5%">	Vehicle Parking Management System.
 		<button  class="btn btn-danger" onclick="window.location.href='logout.php'" style="float: right;margin-right: 4%;color: white;margin-top:1.5%;">Logout</button>
+    <h3 style="margin-right: 4%;float: right;">Welcome , <?php echo ucfirst($_SESSION['user']) ?></h3>
 	</div><br><br>
 <div class="container">
 	<div>  
@@ -122,3 +125,10 @@ Dr. S. Radakrishnan, the then Vice President of India, declared the 2.2 MMTPA (M
 </div>
 </body>
 </html>
+
+<?php
+}
+else{
+  header("Location:index.php");
+}
+?>

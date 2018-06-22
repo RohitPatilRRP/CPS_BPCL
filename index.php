@@ -1,7 +1,6 @@
 <?php
 include('connect.php');
 session_start();
-
 ?>
 
 
@@ -90,6 +89,7 @@ session_start();
 if(isset($_POST['login'])){
 $name=$_POST['name'];
 $pass=$_POST['password'];
+$_SESSION['user']= $name;
 	$sql="SELECT * FROM users WHERE name='$name' AND password='$pass';";
 	$res=mysqli_query($db,$sql);
 	if(mysqli_num_rows($res)>0){

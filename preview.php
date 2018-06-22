@@ -83,7 +83,7 @@ while($row1 = mysqli_fetch_array($a2))
 ?>
 <tr>
 	<td style="font-size: 20px;"><?php echo $row1['plotno'] ?></td>
-	<td style="font-size: 20px;"><?php echo $row1['name'] ?></td>
+	<td style="font-size: 20px;"><?php echo ucfirst($row1['name']) ?></td>
 	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
 	<td style="font-size: 20px;"><?php echo $row1['time'] ?></td>
 </tr>
