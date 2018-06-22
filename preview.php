@@ -47,7 +47,7 @@ $a = mysqli_query($db,$sql);
 $sql2 = "select * from slots where available='No';";
 $a2 = mysqli_query($db,$sql2);
 ?>
-<h3>Available Slots</h3>
+<h3>Available Slots : <?php echo mysqli_num_rows($a) ?></h3>
 <table class="table">
 <?php
 if(mysqli_num_rows($a)>0){
@@ -68,7 +68,7 @@ else {
 
 
 <br>
-<h3>Allocated Slots</h3>
+<h3>Allocated Slots : <?php echo mysqli_num_rows($a2) ?></h3>
 <table class="table">
 	<?php if(mysqli_num_rows($a2)>0){ ?>
 <tr>

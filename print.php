@@ -67,7 +67,7 @@ $vt =$_SESSION['ty'];
     </div>
   </div>
       <center>
-      <button class="btn btn-primary" style="margin-top: -13%;"><a href="entry.php" style="text-decoration: none;color: white;">Back</button></a> &nbsp;
+     <a href="entry.php" style="text-decoration: none;color: white;"> <button class="btn btn-primary" style="margin-top: -13%;">Back</button></a> &nbsp;
       <button class="btn btn-primary" style="margin-top: -13%;" onclick="printContent('div1')">Print</button>
     </center>
 </body>

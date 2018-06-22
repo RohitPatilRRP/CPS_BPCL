@@ -32,12 +32,12 @@ include('connect.php');
   <form style="width: 50%;border: 2px solid black;border-radius:5px;padding: 10px " method="post">
 <div class="form-group">
      <label>Enter Card ID to be removed</label>
-    <input type="text" class="form-control" name="carid" placeholder="Car ID">
+    <input type="text" class="form-control" name="carid" placeholder="Car ID" required>
   </div>
  <br>
   <button type="submit" class="btn btn-primary" name="exit">Remove</button>
 </form></center>
-<center><button class="btn btn-primary" style="margin-top: 5%;"><a href="menu.php" style="text-decoration: none;color: white;">Back</button></a></center>
+<center><a href="menu.php" style="text-decoration: none;color: white;"><button class="btn btn-primary" style="margin-top: 5%;">Back</button></a></center>
 </body>
 </html>
 
@@ -49,15 +49,16 @@ if(isset($_POST['exit'])){
  $sql="UPDATE slots SET carid='',name='',available='Yes',vehicle_type='',user_type='' WHERE carid='$carid';";
  $check = "SELECT * FROM slots WHERE carid='$carid';";
   $abc = mysqli_query($db,$check);
-  $name; $carid ; $vt ; $ty ; $time=date('Y-m-d H:i:s');
+  $name; $carid ; $vt ; $ty ;$plotno ; $time=date('Y-m-d H:i:s');
   while ($row = mysqli_fetch_array($abc)) {
     $carid = $row['carid'];
     $name = $row['name'];
     $vt = $row['vehicle_type'];
     $ty = $row['user_type'];
+    $plotno = $row['plotno'];
   }
   if(mysqli_num_rows($abc)>0){
-     $insert = "INSERT into exit_records(carid,name,vehicle_type,user_type,exit_time) VALUES ('$carid','$name','$vt','$ty','$time');";
+     $insert = "INSERT into exit_records(carid,name,vehicle_type,user_type,exit_time) VALUES ('$plotno','$carid','$name','$vt','$ty','$time');";
    }
   if(mysqli_num_rows($abc)>0){
 

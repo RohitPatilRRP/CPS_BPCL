@@ -84,7 +84,7 @@ include('connect.php');
   <button type="submit" class="btn btn-primary" name="entry">Print Receipt</button>
 </form><br>
  <center>
-       <button class="btn btn-primary"><a href="menu.php" style="text-decoration: none;color: white;">Back</button></a>
+       <a href="menu.php" style="text-decoration: none;color: white;"><button class="btn btn-primary">Back</button></a>
     </center>
 </body>
 </html>
@@ -108,7 +108,7 @@ if(isset($_POST['entry']))
   $_SESSION['time'] = date('Y-m-d H:i:s');
 
 
-  $insert = "INSERT into entry_records(carid,name,vehicle_type,user_type,entry_time) VALUES ('$carid','$name','$vt','$ty','{$_SESSION['time']}');";
+  $insert = "INSERT into entry_records(plotno,carid,name,vehicle_type,user_type,entry_time) VALUES ('$plotno','$carid','$name','$vt','$ty','{$_SESSION['time']}');";
   $abc= mysqli_query($db,$insert);
   echo ("<script LANGUAGE='JavaScript'>
     window.location.href='print.php';

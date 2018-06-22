@@ -45,7 +45,7 @@ session_start();
 					<span class="login100-form-title p-b-26">
 						Admin Login
 					</span>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100 validate-input" data-validate="Enter Name">
 						<input class="input100" type="text" name="name">
 						<span class="focus-input100" data-placeholder="Name"></span>
 					</div>

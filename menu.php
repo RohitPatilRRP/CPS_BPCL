@@ -52,16 +52,16 @@ if(mysqli_num_rows($res)>0){
 
 		?>
 		<h3>No slots Available</h3> 
-    <button class="btn btn-primary " type="button">
-    <a href="exit.php" style="text-decoration: none;color: white;">Vehicle Exit</a></button>
+    <a href="exit.php" style="text-decoration: none;color: white;"><button class="btn btn-primary " type="button">
+    Vehicle Exit</button></a>
 		</div><br>
 		<?php
 	}
 ?>
 <br>
-<div style="height: 10px;"><button class="btn btn-primary" type="button"><a href="preview.php" style="text-decoration: none;color: white;float: right;">View Slots occupied</button></a>
-<button class="btn btn-primary" type="button"><a href="entries.php" style="text-decoration: none;color: white;float: right;">View Total Entries</button></a>
-<button class="btn btn-primary" type="button"><a href="exits.php" style="text-decoration: none;color: white;float: right;">View Total Exits</button></a>
+<div style="height: 10px;"><a href="preview.php" style="text-decoration: none;color: white;"><button class="btn btn-primary" type="button">View Slots occupied</button></a>
+<a href="entries.php" style="text-decoration: none;color: white;"><button class="btn btn-primary" type="button">View Total Entries</button></a>
+<a href="exits.php" style="text-decoration: none;color: white;"><button class="btn btn-primary" type="button">View Total Exits</button></a>
 
 
 </div>

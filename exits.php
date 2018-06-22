@@ -53,6 +53,7 @@ $count = mysqli_num_rows($a);
 if(mysqli_num_rows($a)>0){ ?>
 <tr>
 	<th>Car ID</th>
+	<th>Plot No.</th>
 	<th>User Name</th>
 	<th>Vehicle ID</th>
 	<th>Exit Time</th>
@@ -66,6 +67,7 @@ while($row1 = mysqli_fetch_array($a))
 ?>
 <tr>
 	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['plotno'] ?></td>
 	<td style="font-size: 20px;"><?php echo ucfirst($row1['name']) ?></td>
 	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
 	<td style="font-size: 20px;"><?php echo $row1['exit_time'] ?></td>

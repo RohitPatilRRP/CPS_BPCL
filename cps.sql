@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2018 at 07:41 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 5.6.36
+-- Generation Time: Jun 22, 2018 at 04:41 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -29,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `entry_records` (
+  `plotno` varchar(30) NOT NULL,
   `carid` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `vehicle_type` varchar(30) NOT NULL,
@@ -40,9 +39,11 @@ CREATE TABLE `entry_records` (
 -- Dumping data for table `entry_records`
 --
 
-INSERT INTO `entry_records` (`carid`, `name`, `vehicle_type`, `user_type`, `entry_time`) VALUES
-('123', 'amit', '4 - Wheeler', 'Visitor', '2018-06-22 07:27:39'),
-('1234', 'Rohit', '4 - Wheeler', 'Employee', '2018-06-22 07:28:17');
+INSERT INTO `entry_records` (`plotno`, `carid`, `name`, `vehicle_type`, `user_type`, `entry_time`) VALUES
+('c2', '123', 'amit', '4 - Wheeler', 'Visitor', '2018-06-22 07:27:39'),
+('c3', '1234', 'Rohit', '4 - Wheeler', 'Employee', '2018-06-22 07:28:17'),
+('c3', '213', 'rakesh', '2 - Wheeler', 'Visitor', '2018-06-22 16:39:57'),
+('c4', '5010', 'Jay', '2 - Wheeler', 'Visitor', '2018-06-22 16:28:52');
 
 -- --------------------------------------------------------
 
@@ -51,6 +52,7 @@ INSERT INTO `entry_records` (`carid`, `name`, `vehicle_type`, `user_type`, `entr
 --
 
 CREATE TABLE `exit_records` (
+  `plotno` varchar(30) NOT NULL,
   `carid` varchar(30) NOT NULL,
   `name` varchar(30) NOT NULL,
   `vehicle_type` varchar(30) NOT NULL,
@@ -62,9 +64,10 @@ CREATE TABLE `exit_records` (
 -- Dumping data for table `exit_records`
 --
 
-INSERT INTO `exit_records` (`carid`, `name`, `vehicle_type`, `user_type`, `exit_time`) VALUES
-('444', 'Atul', '2 - Wheeler', 'Employee', '2018-06-22 07:20:23'),
-('4356', 'Amit', '2 - Wheeler', 'Visitor', '2018-06-22 07:22:45');
+INSERT INTO `exit_records` (`plotno`, `carid`, `name`, `vehicle_type`, `user_type`, `exit_time`) VALUES
+('c3', '4356', 'Amit', '2 - Wheeler', 'Visitor', '2018-06-22 07:22:45'),
+('c2', '444', 'Atul', '2 - Wheeler', 'Employee', '2018-06-22 07:20:23'),
+('c4', '5010', 'Jay', '2 - Wheeler', 'Visitor', '2018-06-22 16:32:14');
 
 -- --------------------------------------------------------
 
@@ -110,11 +113,24 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`) VALUES
-(1, 'amit', '123');
+(1, 'amit', '123'),
+(2, 'Rohit', '123');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `entry_records`
+--
+ALTER TABLE `entry_records`
+  ADD UNIQUE KEY `carid` (`carid`);
+
+--
+-- Indexes for table `exit_records`
+--
+ALTER TABLE `exit_records`
+  ADD UNIQUE KEY `carid` (`carid`);
 
 --
 -- Indexes for table `slots`
@@ -136,9 +152,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
