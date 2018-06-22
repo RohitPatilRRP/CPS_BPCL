@@ -38,63 +38,48 @@ include('connect.php');
 	</div>
 	<div style="margin-left: 5%;margin-right: 5%;">
 		
-	<h2> Slots available and allocated </h2>
+	<h2> Total Exits </h2>
 
 	<span>
 <?php
-$sql = "select * from slots where available='Yes';";
+$sql = "select * from exit_records;";
 $a = mysqli_query($db,$sql);
-$sql2 = "select * from slots where available='No';";
-$a2 = mysqli_query($db,$sql2);
+$count = mysqli_num_rows($a);
 ?>
-<h3>Available Slots</h3>
+<h3>List of Vehicles</h3><br>
+<h3>Count of Vehicles : <?php echo $count; ?> </h3> <br>
 <table class="table">
 <?php
-if(mysqli_num_rows($a)>0){
-while($row = mysqli_fetch_array($a))
+if(mysqli_num_rows($a)>0){ ?>
+<tr>
+	<th>Car ID</th>
+	<th>User Name</th>
+	<th>Vehicle ID</th>
+	<th>Exit Time</th>
+	<th>Vehicle Type</th>
+	<th>User Type</th>
+</tr>
+
+	<?php 
+while($row1 = mysqli_fetch_array($a))
 {
 ?>
 <tr>
-	<td style="font-size: 20px;"><?php echo $row['plotno'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
+	<td style="font-size: 20px;"><?php echo ucfirst($row1['name']) ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['exit_time'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['vehicle_type'] ?></td>
+	<td style="font-size: 20px;"><?php echo $row1['user_type'] ?></td>
 </tr>
 <?php
 } }
 
 else {
-	echo "No slots available";
+	echo "No Exits";
 } ?>
 </table>
 </span>
-
-
-<br>
-<h3>Allocated Slots</h3>
-<table class="table">
-	<?php if(mysqli_num_rows($a2)>0){ ?>
-<tr>
-	<th>Plot Number</th>
-	<th>User Name</th>
-	<th>Vehicle ID</th>
-	<th>Time</th>
-</tr>
-<?php
-while($row1 = mysqli_fetch_array($a2))
-	{
-?>
-<tr>
-	<td style="font-size: 20px;"><?php echo $row1['plotno'] ?></td>
-	<td style="font-size: 20px;"><?php echo $row1['name'] ?></td>
-	<td style="font-size: 20px;"><?php echo $row1['carid'] ?></td>
-	<td style="font-size: 20px;"><?php echo $row1['time'] ?></td>
-</tr>
-<?php
-	} 
-}
-else {
-	echo "<h3 style=\"font-size: 20px;\">No slots allocated</h3>";
-} 
-?>
-</table>
 </div>
 </body>
 </html>

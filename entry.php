@@ -20,6 +20,15 @@ include('connect.php');
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Heebo|Indie+Flower" rel="stylesheet">
+  <script type="text/javascript">
+    function validateForm() {
+    var x = document.forms["myForm"]["carid"].value;
+    if (x == "") {
+        alert("Car ID must be filled out");
+        return false;
+    }
+}
+  </script>
 </head>
 <body>
 	
@@ -30,7 +39,7 @@ include('connect.php');
 <br>
 
 <center>
-	<form style="width: 50%;border: 2px solid black;border-radius:5px;padding: 10px " method="post">
+	<form style="width: 50%;border: 2px solid black;border-radius:5px;padding: 10px " method="post" onsubmit="return validateForm()" name="myForm">
   <div class="form-group">
 
   	<label>Vehicle Type</label>
@@ -44,7 +53,7 @@ include('connect.php');
   </div>
      <div class="form-group">
   	 <label>Name</label>
-    <input type="text" class="form-control" name="name" placeholder="Name">
+    <input type="text" class="form-control" name="name" placeholder="Name" required>
   </div>
  <div class="form-group">
     <label>Type</label>
@@ -98,6 +107,9 @@ if(isset($_POST['entry']))
   $_SESSION['ty'] = $ty;
   $_SESSION['time'] = date('Y-m-d H:i:s');
 
+
+  $insert = "INSERT into entry_records(carid,name,vehicle_type,user_type,entry_time) VALUES ('$carid','$name','$vt','$ty','{$_SESSION['time']}');";
+  $abc= mysqli_query($db,$insert);
   echo ("<script LANGUAGE='JavaScript'>
     window.location.href='print.php';
     </script>");

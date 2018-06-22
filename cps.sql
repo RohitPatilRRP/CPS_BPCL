@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2018 at 10:35 AM
+-- Generation Time: Jun 22, 2018 at 07:41 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -21,6 +21,50 @@ SET time_zone = "+00:00";
 --
 -- Database: `cps`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `entry_records`
+--
+
+CREATE TABLE `entry_records` (
+  `carid` varchar(30) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `vehicle_type` varchar(30) NOT NULL,
+  `user_type` varchar(30) NOT NULL,
+  `entry_time` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `entry_records`
+--
+
+INSERT INTO `entry_records` (`carid`, `name`, `vehicle_type`, `user_type`, `entry_time`) VALUES
+('123', 'amit', '4 - Wheeler', 'Visitor', '2018-06-22 07:27:39'),
+('1234', 'Rohit', '4 - Wheeler', 'Employee', '2018-06-22 07:28:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exit_records`
+--
+
+CREATE TABLE `exit_records` (
+  `carid` varchar(30) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `vehicle_type` varchar(30) NOT NULL,
+  `user_type` varchar(30) NOT NULL,
+  `exit_time` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exit_records`
+--
+
+INSERT INTO `exit_records` (`carid`, `name`, `vehicle_type`, `user_type`, `exit_time`) VALUES
+('444', 'Atul', '2 - Wheeler', 'Employee', '2018-06-22 07:20:23'),
+('4356', 'Amit', '2 - Wheeler', 'Visitor', '2018-06-22 07:22:45');
 
 -- --------------------------------------------------------
 
@@ -43,10 +87,10 @@ CREATE TABLE `slots` (
 --
 
 INSERT INTO `slots` (`carid`, `name`, `plotno`, `available`, `time`, `vehicle_type`, `user_type`) VALUES
-('', '', 'c1', 'Yes', '2018-06-21 06:58:34.825594', '', ''),
-('', '', 'c2', 'Yes', '2018-06-21 06:58:34.825594', '', ''),
+('1234', 'Rohit', 'c1', 'No', '2018-06-21 06:58:34.825594', '4 - Wheeler', 'Employee'),
+('123', 'amit', 'c2', 'No', '2018-06-21 06:58:34.825594', '4 - Wheeler', 'Visitor'),
 ('', '', 'c3', 'Yes', '2018-06-21 06:58:34.825594', '', ''),
-('', '', 'c4', 'Yes', '2018-06-21 06:58:34.825594', '', ''),
+('', '', 'c4', 'Yes', '0000-00-00 00:00:00.000000', '', ''),
 ('', '', 'c5', 'Yes', '2018-06-21 06:58:34.825594', '', '');
 
 -- --------------------------------------------------------

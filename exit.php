@@ -48,9 +48,21 @@ if(isset($_POST['exit'])){
  $carid = $_POST['carid'];
  $sql="UPDATE slots SET carid='',name='',available='Yes',vehicle_type='',user_type='' WHERE carid='$carid';";
  $check = "SELECT * FROM slots WHERE carid='$carid';";
- $abc = mysqli_query($db,$check);
+  $abc = mysqli_query($db,$check);
+  $name; $carid ; $vt ; $ty ; $time=date('Y-m-d H:i:s');
+  while ($row = mysqli_fetch_array($abc)) {
+    $carid = $row['carid'];
+    $name = $row['name'];
+    $vt = $row['vehicle_type'];
+    $ty = $row['user_type'];
+  }
   if(mysqli_num_rows($abc)>0){
+     $insert = "INSERT into exit_records(carid,name,vehicle_type,user_type,exit_time) VALUES ('$carid','$name','$vt','$ty','$time');";
+   }
+  if(mysqli_num_rows($abc)>0){
+
     $res=mysqli_query($db,$sql);
+    $res1=mysqli_query($db,$insert);
     echo ("<script LANGUAGE='JavaScript'>
     window.alert('Succesfully Removed');
     </script>");
